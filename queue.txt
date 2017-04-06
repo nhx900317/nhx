@@ -1,0 +1,26 @@
+服务端排队取号接口定义：
+
+【请求】
+请求方式：GET
+请求URL地址：http://ip:port/iqaman/bankRobot/queue.action?ct=2&no=xxx&name=xxx&bt1=xxx&bt2=xxx&bn=xxx
+
+http://128.128.112.240:36080/iqaman/bankRobot/queue.action?ct=2&no=421022198703127890&name=张三&bt1=M1&bt2=M1&bn=个人现金
+
+请求参数说明：
+ct       --取号方式：1 银行卡，2 身份证，必填
+no       --卡号或证件号，必填
+name     --客户姓名，必填
+bt1      --一级业务代码，必填
+bt2      --当前业务代码，可选
+bn       --业务名称，必填
+
+注释：no和name需从刷卡成功返回的数据中获取，bt1、bt2及bn是业务相关数据，需从问答接口中的 webData.ext.data 中获取，如 webData.ext.data.bt1
+
+【响应】
+响应报文格式：JSON
+
+响应报文示例：
+{"terminal":"101","resp_code":"000000000","resp_msg":"成功","branch_name":"广州开发区工业园支行","ticket":"S1002","waiting":"2","business_type1":null,"business_type2":null,"business_name":"个人现金","time":"01 月 13 日 01 时 05 分"}
+
+
+
